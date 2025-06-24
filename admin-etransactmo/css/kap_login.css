@@ -1,0 +1,97 @@
+/* Background Styling */
+body {
+    background-image: url("../PIC/background1.png");
+    background-size: 110%;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Login Container */
+#login-container {
+    background-color: white;
+    padding: 50px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border: 1px solid black;
+}
+
+/* Login Title */
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Custom Input Fields */
+.custom-field {
+    position: relative;
+    font-size: 14px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+
+.custom-field input {
+    width: 93%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+/* Placeholder Animation */
+.custom-field .placeholder {
+    position: absolute;
+    top: calc(50% + 10px);
+    left: 12px;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+    color: #aaa;
+}
+
+.custom-field input:valid + .placeholder,
+.custom-field input:focus + .placeholder {
+    top: 5px;
+    font-size: 12px;
+    color: black;
+    background-color: white;
+    padding: 2px 5px;
+}
+
+/* Styled Login Button */
+#login-button {
+    background-color: rgba(255, 199, 110, 0.897);
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+#login-button:hover {
+    background-color: rgba(255, 157, 0, 0.897);
+    transform: translateY(-3px);
+}
+
+#login-button:active {
+    background-color: orange;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    #login-container {
+        width: 90%;
+    }
+}

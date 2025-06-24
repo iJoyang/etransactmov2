@@ -1,0 +1,198 @@
+body {
+  background-image: url(../Images/background1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: fit-content;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.background {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding: 2%;
+  gap: 100px;
+  overflow: hidden;
+}
+
+.logo-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff,
+    1px 1px 0 #ffffff;
+  font-size: 1rem;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 2rem 3rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.logo-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Buttons */
+.btn {
+  align-items: center;
+  background-color: rgba(255, 199, 110, 0.897);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 0.5;
+  margin: 0;
+  min-height: 2.7rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+i {
+  font-size: 20vw;
+  margin-bottom: 10px;
+}
+
+.btn:hover,
+.btn:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.897);
+  background-color: rgba(255, 157, 0, 0.897);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn:active {
+  background-color: orange;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+.login-btn {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: fit-content;
+}
+
+/*Para sa loading animation*/
+#loadingMessage {
+  display: none; /* Hidden dapat sya una, diha na dapat mo pop up inig redirect */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent black background */
+  color: #000;
+  text-align: center;
+  z-index: 1000; /* Ensure nga naa sya sa pinaka taas na layer sa content */
+  justify-content: center;
+  align-items: center;
+}
+
+#loadingLogo {
+  width: 20vw;
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 20px; /* Space between logo and text */
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1; /* Visible */
+  }
+  50% {
+    opacity: 0; /* Hidden */
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  .background {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .logo_size {
+    width: 50vw;
+  }
+
+  .login-btn {
+    width: 20vw;
+  }
+
+  .login-container {
+    width: 50vw;
+  }
+
+  .btn {
+    width: fit-content;
+  }
+  i {
+    font-size: 20vw;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .logo_size {
+    width: 70vw;
+  }
+
+  .background {
+    gap: 0;
+  }
+}

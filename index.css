@@ -1,0 +1,151 @@
+body {
+  background-image: url("client-etransactmo/Images/background1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: fit-content;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.background {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-img {
+  width: 30vw;
+  max-width: 2000px;
+}
+
+/* BUTTONS STYLE */
+.buttons {
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.admin-button {
+  background-color: #fa3e00;
+  color: #ffffff;
+}
+
+.user-button {
+  background-color: #00fa15;
+  color: #000000;
+}
+
+.user-button,
+.admin-button {
+  margin: 10px;
+  align-items: center;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.admin-button:hover,
+.admin-button:focus {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.user-button:hover,
+.user-button:focus {
+  background-color: #73ff7f;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.user-button:hover,
+.admin-button:hover {
+  transform: translateY(-5px);
+}
+
+.user-button:active,
+.admin-button:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+/*Para sa loading animation*/
+#loadingMessage {
+  display: none; /* Hidden dapat sya una, diha na dapat mo pop up inig redirect */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent black background */
+  color: #000;
+  text-align: center;
+  z-index: 1000; /* Ensure nga naa sya sa pinaka taas na layer sa content */
+  justify-content: center;
+  align-items: center;
+}
+
+#loadingLogo {
+  width: 20vw;
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 20px; /* Space between logo and text */
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1; /* Visible */
+  }
+  50% {
+    opacity: 0; /* Hidden */
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow: hidden;
+  }
+  .logo-img {
+    width: 50vw;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    overflow: hidden;
+  }
+
+  .logo-img {
+    width: 70vw;
+  }
+}

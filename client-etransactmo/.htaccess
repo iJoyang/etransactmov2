@@ -1,0 +1,9 @@
+# Redirect all requests to index.html
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.html [L]
+
+# Block direct access to other pages
+RewriteCond %{THE_REQUEST} /([^/]*)\.html [NC]
+RewriteRule !^index.html$ - [F,L]

@@ -1,0 +1,769 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("../PIC/background1.png");
+  background-size: cover;
+  background-attachment: fixed;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.table-container {
+  margin-top: 20px;
+  overflow-x: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#residents-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#residents-table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+}
+
+#residents-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+#residents-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#residents-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px; /* spacing between buttons */
+  justify-content: center;
+  align-items: center;
+}
+
+.viewQR-btn,
+.delete-btn {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.viewQR-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Button Container for View Resident & Change Email */
+.button-container {
+  display: flex;
+  justify-content: start;
+  gap: 15px;
+  margin: 20px;
+}
+
+/* Text Buttons */
+.text-btn {
+  background: none;
+  border: 2px solid #007bff;
+  color: #007bff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.text-btn:hover {
+  background: #007bff;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Logout Button Positioned at Bottom Right */
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+  font-size: 16px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  position: fixed;
+  bottom: 20px;
+  right: 90px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+  transform: scale(1.1);
+}
+
+/* Popup Form Styling */
+.popup-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+#change-email-password-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#change-email-password-form label {
+  margin-bottom: 8px;
+}
+
+#change-email-password-form input {
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#change-email-password-form button {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#change-email-password-form button:hover {
+  background-color: #0056b3;
+}
+
+/* QR ID Modal */
+.close-btn {
+  background: none;
+  border: none;
+  font-weight: bolder;
+  font-size: 2vw;
+  position: absolute;
+  top: 5%;
+  right: 6%;
+  cursor: pointer;
+}
+
+/* QR ID Modal */
+.close-btn:hover {
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+/* QR ID Modal */
+.modal2 {
+  display: none; /* Modal hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.584);
+  z-index: 1002;
+  object-fit: contain;
+}
+
+/* Standard ID size (2.125 x 3.375 inches) */
+.modal-container2 {
+  background-color: #ffffff;
+  border: 1px solid #00000026;
+  border-radius: 10px;
+  margin: 1vw 5vw;
+  padding: 0;
+  width: 90vw; /* ID width */
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-title {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  max-height: 40px;
+}
+
+.modal-title img {
+  width: 40px;
+  height: auto;
+}
+
+.modal-content {
+  display: flex;
+}
+
+/* Details and QR code styling */
+.details {
+  width: 100%;
+  text-align: left;
+  font-size: 10px;
+  padding-left: 5px;
+}
+
+.qr-code {
+  width: 100%;
+  text-align: center;
+}
+
+.qr-code img {
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+/* Print-specific styling */
+@media print {
+  /* Reset margins and padding */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+  body * {
+    visibility: hidden; /* Hide everything by default */
+  }
+
+  .modal-container,
+  .modal-container * {
+    visibility: visible; /* Show only modal-container and its children */
+  }
+
+  .modal-container {
+    padding: 0;
+    margin: 10% auto;
+    border: 1px solid #888;
+    width: 3.375in; /* ID width */
+    height: 2.125in; /* ID height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent overflow */
+    page-break-inside: avoid; /* Avoid breaking inside the modal */
+  }
+
+  .modal-buttons {
+    display: none; /* Hide the buttons during print */
+  }
+
+  #qrImage {
+    max-width: 100%; /* Adjust image size for printing */
+    max-height: 100%;
+  }
+}
+
+.btn {
+  align-items: center;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  min-height: 2.7rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.btn i {
+  padding-left: 10px;
+  font-size: 2rem; /* Adjust the size of the QR code icon */
+}
+
+.btn:hover,
+.btn:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.897);
+  background-color: #b7e0c0;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn:active {
+  background-color: orange;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Loading animation */
+#loadingMessage {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  color: #000;
+  text-align: center;
+  z-index: 1000; /* Ensure it's on top */
+  justify-content: center;
+  align-items: center;
+}
+
+#loadingLogo {
+  width: 20vw;
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 20px; /* Space between logo and text */
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1; /* Visible */
+  }
+  50% {
+    opacity: 0; /* Hidden */
+  }
+}
+
+/* Generate QR Code Design */
+.logo-container {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-container {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff,
+    1px 1px 0 #ffffff;
+  font-size: 2vw;
+}
+
+.logo-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.logo-size {
+  width: 8vw;
+  max-width: 5000px;
+}
+/* Buttons */
+.back-btn {
+  height: auto;
+  padding: 5px;
+  background-color: #000;
+}
+
+.back-btn > .text > i {
+  font-size: 20px;
+  margin-bottom: -3px;
+}
+
+.btn {
+  align-items: center;
+  background-color: rgba(255, 199, 110, 0.897);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 0.5;
+  margin: 0;
+  min-height: 2.7rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.btn i {
+  padding-left: 10px;
+  font-size: 2rem; /* Adjust the size of the QR code icon */
+}
+
+.btn:hover,
+.btn:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.897);
+  background-color: rgba(255, 157, 0, 0.897);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn:active {
+  background-color: orange;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+/* para sa Registration Form */
+
+.register-form-container {
+  padding: 0.5vw;
+  width: 200vw;
+  max-width: 100%;
+  height: auto;
+  justify-content: center;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+  max-width: 100%;
+}
+
+.input-fields {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+/* Credits to Custom fields sa Google para ani nga input design */
+
+.custom-field {
+  position: relative;
+  font-size: 14px;
+  padding-top: 20px;
+}
+
+.custom-field input {
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  padding: 12px;
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  width: 12vw;
+  max-width: 250px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.custom-field .placeholder {
+  position: absolute;
+  top: calc(50% + 10px);
+  left: 8px;
+  transform: translateY(-50%);
+  transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease,
+    padding 0.3s ease;
+}
+
+.custom-field input:valid + .placeholder,
+.custom-field input:focus + .placeholder {
+  top: 9px;
+  font-size: 12px;
+  color: #222;
+  background-color: #fff;
+  padding: 0px 5px;
+  transition-delay: 0.1s;
+}
+
+.custom-field input:valid,
+.custom-field input:focus {
+  border: 2px solid #000;
+}
+
+.custom-field select {
+  border: none;
+  background: none;
+  padding: 12px;
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  width: 12vw;
+  max-width: 250px;
+  outline: none;
+  transition: border 0.3s ease;
+  font-size: 14px;
+  appearance: none;
+}
+
+.custom-field select:focus + .placeholder,
+.custom-field select:valid + .placeholder {
+  top: 9px;
+  font-size: 12px;
+  color: #222;
+  background-color: #fff;
+  padding: 0px 5px;
+  transition-delay: 0.1s;
+}
+
+.placeholder-fixed {
+  position: absolute;
+  top: 9px;
+  left: 8px;
+  font-size: 12px;
+  color: #222;
+  background-color: #fff;
+  padding: 0px 5px;
+  transform: translateY(-50%);
+}
+
+.custom-field select:focus,
+.custom-field select:valid {
+  border: 2px solid #000;
+}
+
+.region-select {
+  display: none;
+}
+
+#city,
+#province,
+#barangay {
+  pointer-events: none;
+}
+
+/* QR ID Modal */
+.modal {
+  display: none; /* Modal hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.363);
+  z-index: 1001;
+  object-fit: contain;
+}
+
+/* Standard ID size (2.125 x 3.375 inches) */
+.modal-container {
+  background-color: white;
+  padding: 10px;
+  margin: 10% auto;
+  border: 1px solid #888;
+  width: 3.375in; /* ID width */
+  height: 2.125in; /* ID height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.modal-title {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  max-height: 40px;
+}
+
+.modal-title img {
+  width: 40px;
+  height: auto;
+}
+
+.modal-content {
+  display: flex;
+}
+
+/* Details and QR code styling */
+.details {
+  width: 100%;
+  text-align: left;
+  font-size: 10px;
+  padding-left: 5px;
+}
+
+.qr-code {
+  width: 100%;
+  text-align: center;
+}
+
+.qr-code img {
+  width: 90%;
+  height: auto;
+  max-width: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+/* Print-specific styling */
+@media print {
+  /* Reset margins and padding */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+  body * {
+    visibility: hidden; /* Hide everything by default */
+  }
+
+  .modal-container,
+  .modal-container * {
+    visibility: visible; /* Show only modal-container and its children */
+  }
+
+  .modal-container {
+    padding: 0;
+    margin: 10% auto;
+    border: 1px solid #888;
+    width: 3.375in; /* ID width */
+    height: 2.125in; /* ID height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent overflow */
+    page-break-inside: avoid; /* Avoid breaking inside the modal */
+  }
+
+  .modal-buttons {
+    display: none; /* Hide the buttons during print */
+  }
+
+  #qrImage {
+    max-width: 100%; /* Adjust image size for printing */
+    max-height: 100%;
+  }
+}
+
+input[type="text"],
+select,
+radio {
+  text-transform: uppercase; /* Automatically convert text to uppercase */
+}
