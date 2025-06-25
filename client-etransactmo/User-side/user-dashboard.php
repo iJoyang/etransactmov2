@@ -114,6 +114,54 @@ header("Expires: 0"); // Proxies
         </div>
     </div>
 
+      <!-- Settings Navigation Menu -->
+    <div class="settings-nav">
+        <div class="close-btn" onclick="toggleNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="settings-content">
+            <h1>USER MENU</h1>
+            <ul>
+                <li><button class="nav-option active" onclick="setActive(this, 'user-details')"><i class="fas fa-user"></i>User Details</button></li>
+                <li><button class="nav-option" onclick="setActive(this, 'select-transaction')"><i class="fas fa-exchange-alt"></i>Select Transaction</button></li>
+                <li><button class="nav-option" onclick="setActive(this, 'transaction-history')"><i class="fas fa-history"></i>Transaction History</button></li>
+                <li>
+                    <button class="nav-option" onclick="setActive(this, 'waiting-page')"><i class="fas fa-clock"></i>Waiting Page</button>
+                </li>
+            </ul>
+            <button type="submit" class="btn login-btn logout-btn" onclick="logoutUser()">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="text">Logout</span>
+            </button>
+        </div>
+    </div>
+    <!-- Modal to display the QR code and details -->
+    <div id="qrModal" class="modal">
+
+        <div class="modal-container">
+            <div class="modal-title">
+                <img src="../Images/logo.png" alt="logo">
+                <h4>ETRANSACTMO QR ID</h4>
+            </div>
+            <div class="modal-content">
+                <div class="details">
+                    <p><strong>Full Name:</strong> <?php echo $full_name; ?></p>
+                    <p><strong>Age:</strong> <?php echo $age; ?></p>
+                    <p><strong>Gender:</strong> <?php echo $gender; ?></p>
+                    <p><strong>Contact Number:</strong> <?php echo $contact_number; ?></p>
+                    <p><strong>Address:</strong> <?php echo $address; ?></p>
+                </div>
+                <div class="qr-code">
+                    <img id="qrImage" src="<?php echo $qr_code; ?>" alt="QR Code">
+                </div>
+            </div>
+        </div>
+        <div class="modal-buttons">
+            <button onclick="window.print()" class="btn">Print QR ID</button>
+            <button onclick="downloadQR()" class="btn">Download QR ID</button>
+        </div>
+    </div>
+
     <div class="dashboard-content-container">
         <div id="user-details" class="dash-content-container active">
             <div class="dashboard-content">
@@ -426,53 +474,7 @@ header("Expires: 0"); // Proxies
 
     </div>
 
-    <!-- Settings Navigation Menu -->
-    <div class="settings-nav">
-        <div class="close-btn" onclick="toggleNav()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div class="settings-content">
-            <h1>USER MENU</h1>
-            <ul>
-                <li><button class="nav-option active" onclick="setActive(this, 'user-details')"><i class="fas fa-user"></i>User Details</button></li>
-                <li><button class="nav-option" onclick="setActive(this, 'select-transaction')"><i class="fas fa-exchange-alt"></i>Select Transaction</button></li>
-                <li><button class="nav-option" onclick="setActive(this, 'transaction-history')"><i class="fas fa-history"></i>Transaction History</button></li>
-                <li>
-                    <button class="nav-option" onclick="setActive(this, 'waiting-page')"><i class="fas fa-clock"></i>Waiting Page</button>
-                </li>
-            </ul>
-            <button type="submit" class="btn login-btn logout-btn" onclick="logoutUser()">
-                <i class="fas fa-sign-out-alt"></i>
-                <span class="text">Logout</span>
-            </button>
-        </div>
-    </div>
-    <!-- Modal to display the QR code and details -->
-    <div id="qrModal" class="modal">
-
-        <div class="modal-container">
-            <div class="modal-title">
-                <img src="../Images/logo.png" alt="logo">
-                <h4>ETRANSACTMO QR ID</h4>
-            </div>
-            <div class="modal-content">
-                <div class="details">
-                    <p><strong>Full Name:</strong> <?php echo $full_name; ?></p>
-                    <p><strong>Age:</strong> <?php echo $age; ?></p>
-                    <p><strong>Gender:</strong> <?php echo $gender; ?></p>
-                    <p><strong>Contact Number:</strong> <?php echo $contact_number; ?></p>
-                    <p><strong>Address:</strong> <?php echo $address; ?></p>
-                </div>
-                <div class="qr-code">
-                    <img id="qrImage" src="<?php echo $qr_code; ?>" alt="QR Code">
-                </div>
-            </div>
-        </div>
-        <div class="modal-buttons">
-            <button onclick="window.print()" class="btn">Print QR ID</button>
-            <button onclick="downloadQR()" class="btn">Download QR ID</button>
-        </div>
-    </div>
+  
 </body>
 
 <script>
